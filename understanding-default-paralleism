@@ -1,0 +1,3 @@
+# How default.parallelism is set ?
+
+When I provision an EMR with 4 Node (maximizeResourceAllocation) ---> 32 Cores , 4 executors *Catch* is in AWS for Instance type R3 has 2 threads

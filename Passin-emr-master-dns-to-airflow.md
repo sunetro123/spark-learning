@@ -11,8 +11,8 @@ templated_command = get_templated_command('{{var.value.emr_master}}', '{{params.
 t16 = BashOperator(
     task_id = 'Calculate_Dim_Account_ODS_Delta',
     bash_command= templated_command,
-    params={'cluster_id':'10.243.69.50','jar_location':'/usr/lib/zeppelin/interpreter/nzjdbc.jar',
-            'python_file':'s3://bis-randd-lakes/sbanerjee/dim-dags/spark_dim_acct_delta.py' },
+    params={'cluster_id':'x.y.z.c','jar_location':'/usr/lib/zeppelin/interpreter/nzjdbc.jar',
+            'python_file':'s3://yy/xx/abc.py' },
     queue='transfer_queue',
     dag=dag )
 
@@ -21,3 +21,11 @@ t16 = BashOperator(
 Source Code : https://github.com/apache/incubator-airflow/blob/12ab796b11c001f5cc7c5bd294616200b4159dea/airflow/models.py#L1774
 
 #TODO : make the command change
+
+# Learning how to use Airflow variables 
+
+## A utility to propose
+
+use aws cli/boto3 to get current running EMR master, set a variable using ``` airflow variables -s [ 'emr-master' , 'xyz'] ```
+
+ref : https://airflow.apache.org/concepts.html#variables

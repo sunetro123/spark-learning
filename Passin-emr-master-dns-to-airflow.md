@@ -1,3 +1,7 @@
+# How to Automate this whole Thing ?
+
+using aws cli ---> Lost the command shall put back
+
 # When EMR dies because of SPOT Instance
 ### And you have a job that does spark-submit using *Templated* bash operator as ``` ssh -i xyz.pem hadoop@<emr-address>
 

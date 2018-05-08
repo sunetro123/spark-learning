@@ -2,6 +2,32 @@
 
 using aws cli ---> Lost the command shall put back
 
+08-may-2018 :
+Finally made good progress with Jmespath <-- A bad way of parsing JSON
+
+However, following shall
+#### Find all the instances where Owner tag is missing
+
+```
+aws ec2 describe-instances --region us-west-2 --filter "Name = instance-state-name ,Values = 'running'" --query 'Reservations[*].Instances[?!not_null(Tags[?Key == `Owner`].Value)][].[InstanceId, Tags[?Key == `Name`]|[0],Tags[?Key == `Owner`]|[0], State.Name]'
+```
+
+Output Sample :
+
+```
+[
+        "i-0xyxyxyxyxyxyxy6",
+        {
+            "Value": "My EC2 Name",
+            "Key": "Name"
+        },
+        null,
+        "running"
+    ],
+```
+
+https://www.onica.com/blog/using-aws-cli-to-find-untagged-instances/ . <--- One and only one useful blog in the sea of bullocks
+
 # When EMR dies because of SPOT Instance
 ### And you have a job that does spark-submit using *Templated* bash operator as ``` ssh -i xyz.pem hadoop@<emr-address>
 
